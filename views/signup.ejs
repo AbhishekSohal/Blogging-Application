@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+        <title>Sign Up</title>
+</head>
+
+<body>
+    <%- include('./partials/nav') %>
+        <div class="container mt-5">
+            <form action="/user/signup" method="post">
+                <div class="mb-3">
+                    <label for="FullName" class="form-label">Full Name</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="FullName"
+                    name="fullName"
+                    aria-describedby="FullNameHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="Email" class="form-label">Email address</label>
+                    <input 
+                    type="email" 
+                    class="form-control" 
+                    id="Email" 
+                    name="email"
+                    aria-describedby="EmailHelp">
+                    <div id="EmailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="Password" class="form-label">Password</label>
+                    <input 
+                    type="password" 
+                    class="form-control" 
+                    id="Password"
+                    name="password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <%- include('./partials/scripts') %>
+</body>
+
+</html>
