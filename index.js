@@ -1,6 +1,7 @@
 const express = require('express');
 const path= require('path');
 const userRoutes = require('./routes/user');
+const blogRoutes = require('./routes/blog');
 const connectDB = require('./connection');
 const cookieParser = require('cookie-parser');
 
@@ -32,6 +33,7 @@ app.get('/', (req, res) => {
 
 
 app.use('/user',userRoutes)
+app.use('/blog',blogRoutes)
 
 
 
