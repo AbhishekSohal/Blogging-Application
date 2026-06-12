@@ -9,8 +9,13 @@ router.get('/signin', (req, res) => {
 router.get('/signup', (req, res) => {
     res.render('signup')
 })
+router.get('/signout', (req, res) => {
+    res.clearCookie('token').redirect('/');
+});
 
 router.post('/signup', signupUser);
 router.post('/signin', signinUser);
+
+
 
 module.exports = router;
