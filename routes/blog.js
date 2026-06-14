@@ -3,7 +3,9 @@ const router = express.Router();
 const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
+const Blog = require('../models/blog');
 const { addBlog } = require('../controllers/blog');
+const Comment = require('../models/comment');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -29,6 +31,19 @@ const upload = multer({ storage });
 router.get('/add', (req, res) => {
     res.render('addBlog',{
         user: req.user
+    })
+})
+
+router.get('/:id', async (req, res) => {
+    const blog= await Blog.findById(req.params.id).populate('createdBy');
+    if (!blog) {
+        return res.status(404).send('Blog not found');
+    }
+    const comments = await Comment.find({ blogid: req.params.id }).populate('createdBy');
+    return res.render('blog', {
+        user: req.user,
+        blog: blog,
+        comments: comments
     })
 })
 

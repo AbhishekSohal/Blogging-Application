@@ -2,6 +2,7 @@ const express = require('express');
 const path= require('path');
 const userRoutes = require('./routes/user');
 const blogRoutes = require('./routes/blog');
+const commentRoutes = require('./routes/comment');
 const connectDB = require('./connection');
 const Blog = require('./models/blog');
 const cookieParser = require('cookie-parser');
@@ -38,6 +39,7 @@ app.get('/', async (req, res) => {
 
 app.use('/user',userRoutes)
 app.use('/blog',blogRoutes)
+app.use('/blog',commentRoutes)
 
 
 
