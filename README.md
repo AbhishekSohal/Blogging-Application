@@ -2,6 +2,11 @@
 
 A fully featured, secure CRUD Blogging Application built using **Node.js, Express, MongoDB (Mongoose), and EJS**. 
 
+## Live Demo
+
+The application is deployed and running on **AWS**:
+👉 **[View Live Application](http://blogit-env.eba-hjeg3gjq.eu-north-1.elasticbeanstalk.com/)**
+
 ---
 
 ## Features
@@ -30,6 +35,7 @@ A fully featured, secure CRUD Blogging Application built using **Node.js, Expres
 - **File Uploads**: Multer
 - **Frontend Template Engine**: EJS (Embedded JavaScript)
 - **Styling**: Bootstrap 5
+- **Deployment**: AWS (Amazon Web Services)
 
 ---
 
@@ -52,7 +58,7 @@ A fully featured, secure CRUD Blogging Application built using **Node.js, Expres
 │   └── signup.ejs        # Signup form
 ├── .env.example          # Template for environment variables
 ├── connection.js         # MongoDB connection helper
-├── index.js              # Main server entrypoint
+├── app.js                # Main server entrypoint
 └── package.json          # Node dependencies and scripts
 ```
 
