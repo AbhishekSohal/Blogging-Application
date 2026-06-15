@@ -4,7 +4,7 @@ const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
 const Blog = require('../models/blog');
-const { addBlog } = require('../controllers/blog');
+const { addBlog, editBlogPage, updateBlog, deleteBlog } = require('../controllers/blog');
 const Comment = require('../models/comment');
 
 const storage = multer.diskStorage({
@@ -29,13 +29,14 @@ const upload = multer({ storage });
 
 
 router.get('/add', (req, res) => {
-    res.render('addBlog',{
+    res.render('addBlog', {
         user: req.user
     })
 })
+router.post('/', upload.single('cover'), addBlog)
 
 router.get('/:id', async (req, res) => {
-    const blog= await Blog.findById(req.params.id).populate('createdBy');
+    const blog = await Blog.findById(req.params.id).populate('createdBy');
     if (!blog) {
         return res.status(404).send('Blog not found');
     }
@@ -48,7 +49,16 @@ router.get('/:id', async (req, res) => {
 })
 
 
-router.post('/', upload.single('cover'), addBlog)
+
+
+
+router.get('/edit/:id', editBlogPage);
+router.post('/edit/:id', upload.single('cover'), updateBlog);
+
+router.post('/delete/:id', deleteBlog);
+
+
+
 
 module.exports = router;
 

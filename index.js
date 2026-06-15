@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const path= require('path');
 const userRoutes = require('./routes/user');
@@ -10,9 +11,9 @@ const cookieParser = require('cookie-parser');
 const {checkAuthentication}=require('./middlewares/authentication');
 
 const app = express();
-const port = 3000;// in real life, this should be in an environment variable as it can change based on the environment (development, staging, production)
+const port = process.env.PORT || 3000;
 
-connectDB('mongodb://localhost:27017/blogit').then(()=>{
+connectDB(process.env.MONGO_URL || 'mongodb://localhost:27017/blogit').then(()=>{
     console.log('Connected to MongoDB');
 }).catch((err)=>{
     console.error('Error connecting to MongoDB', err);

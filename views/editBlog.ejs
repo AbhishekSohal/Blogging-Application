@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+    <title>Edit Blog - <%= blog.title %></title>
+</head>
+
+<body>
+    <%- include('./partials/nav') %>
+    <div class="container mt-3">
+        <h2>Edit Blog</h2>
+        <form action="/blog/edit/<%= blog._id %>" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label">Current Cover Image</label>
+                <img src="<%= blog.coverImageURL %>" class="img-thumbnail d-block mb-2" style="max-height: 200px; width: auto;" alt="Current Cover Image">
+                
+                <label for="cover" class="form-label">Upload New Cover Image (optional)</label>
+                <input type="file" class="form-control" id="cover" name="cover" aria-describedby="cover">
+            </div>
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" value="<%= blog.title %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">Content</label>
+                <textarea class="form-control" id="content" name="content" rows="8" required><%= blog.content %></textarea>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success">Save Changes</button>
+                <a href="/blog/<%= blog._id %>" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+    <%- include('./partials/scripts') %>
+</body>
+
+</html>

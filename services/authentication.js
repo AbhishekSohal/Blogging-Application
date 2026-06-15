@@ -1,5 +1,5 @@
 const jwt=require('jsonwebtoken');
-const secretKey="b@tm@n@123";
+const secretKey=process.env.JWT_SECRET || "b@tm@n@123";
 
 
 function generateToken(user){
